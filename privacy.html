@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy for the SMH — Social Media Hub Windows desktop application and informational website.">
+  <meta name="theme-color" content="#07111f">
+  <title>Privacy Policy | SMH — Social Media Hub</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header dark-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="index.html" aria-label="SMH — Social Media Hub home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-copy"><strong>SMH</strong><span>Social Media Hub</span></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="sr-only">Toggle navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation"><a href="index.html">Home</a><a href="index.html#workflow">Workflow</a><a href="index.html#platforms">Platforms</a><a class="nav-legal" href="terms.html">Terms</a></nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <header class="legal-hero">
+      <div class="shell legal-hero-inner">
+        <p class="eyebrow"><span></span> Legal &amp; trust</p>
+        <h1>Privacy Policy</h1>
+        <p>This policy explains how SMH — Social Media Hub is intended to handle information when authorized users operate the Windows desktop application.</p>
+        <div class="legal-meta"><span>Effective date: <strong>October 10, 2026</strong></span><span>Publication draft · Not professionally approved</span></div>
+      </div>
+    </header>
+
+    <div class="shell legal-layout">
+      <aside class="legal-aside" aria-label="Privacy policy contents">
+        <strong>On this page</strong>
+        <nav><a href="#overview">Overview</a><a href="#information">Information handled</a><a href="#oauth">OAuth &amp; credentials</a><a href="#media">Media transfers</a><a href="#third-parties">Third parties</a><a href="#retention">Retention &amp; deletion</a><a href="#contact">Contact</a></nav>
+      </aside>
+
+      <article class="legal-content">
+        <section id="overview">
+          <span class="legal-number">01</span><h2>Overview and scope</h2>
+          <p>SMH — Social Media Hub is an independent Windows desktop social media management application developed and operated by an individual developer for creators, businesses, agencies, and social media managers. Its current MVP helps authorized users select video content, enter publishing details, choose connected social media destinations, submit content through official platform APIs, and review platform-specific results.</p>
+          <p>This website is informational only. It does not host the desktop application, authenticate users, receive OAuth tokens, upload media, or publish content.</p>
+          <p>SMH — Social Media Hub is the public-facing product name used by the individual developer. SMH is not represented as an incorporated or registered company.</p>
+        </section>
+
+        <section id="information">
+          <span class="legal-number">02</span><h2>Information the application may handle</h2>
+          <p>Depending on the connected platform and enabled functionality, the desktop application may handle:</p>
+          <ul>
+            <li><strong>Social account information:</strong> account, page, channel, organization, or profile identifiers; display names; and other information returned by an authorized platform API.</li>
+            <li><strong>Publishing metadata:</strong> captions, titles, descriptions, selected destinations, timestamps, platform post identifiers, and publication status.</li>
+            <li><strong>Media information:</strong> selected video files, file names, formats, sizes, durations, and other technical details needed to process or publish the content.</li>
+            <li><strong>Operational records:</strong> publishing history, platform responses, error messages, diagnostic details, and retry information.</li>
+            <li><strong>Authorization data:</strong> OAuth access tokens, refresh tokens, granted scopes, and token expiry information where provided by a platform.</li>
+          </ul>
+          <p>The exact information available is controlled by the platform, the permissions granted, and the features enabled for the application.</p>
+        </section>
+
+        <section id="local-data">
+          <span class="legal-number">03</span><h2>Locally stored application data</h2>
+          <p>The application uses a local FastAPI service and a local SQLite database. The SQLite database is not protected by application-level encryption. It stores publishing history, social account identifiers, local media references and file paths, captions and other publishing metadata, platform results, remote post identifiers and URLs, error information, and timestamps. OAuth token values are not stored in the SQLite publishing-history database.</p>
+          <p>Local storage does not mean that all data remains on the device. Publishing and media preparation can send video files and related information to selected social platforms and, for some Meta workflows, temporary Google Drive media storage as described below.</p>
+        </section>
+
+        <section id="oauth">
+          <span class="legal-number">04</span><h2>OAuth authorization and credential security</h2>
+          <p>Social accounts are connected using the relevant platform’s OAuth authorization process. The application requests permissions needed for enabled features and directs users to the platform’s sign-in and consent experience; it does not ask users to provide their social platform passwords directly.</p>
+          <p>OAuth access tokens, refresh tokens where provided, and related authorization data are currently stored in local JSON files on the Windows computer. Application-level encryption at rest is not currently implemented. These credential files are excluded from the project's Git source-control rules. Token values are not intentionally included in normal account-status or publishing responses and are not stored in SQLite publishing history. Some diagnostic error and access-log entries may contain operational information, and complete redaction across every logging path is not currently implemented.</p>
+          <p>Users can generally revoke platform access through the relevant social platform’s account or security settings. The application does not currently provide an in-app disconnect or token-revocation function, and revocation does not automatically remove locally stored credential files or content already published.</p>
+        </section>
+
+        <section id="media">
+          <span class="legal-number">05</span><h2>Media processing and external transfers</h2>
+          <p>When an authorized user starts a publishing operation, the selected video and publishing metadata may be transmitted to the chosen social platform through its official API. External transfer can occur while preparing a draft, processing media, or using another non-public mode; selecting a non-public option does not necessarily keep the media on the local computer.</p>
+          <p>Instagram and Facebook workflows may temporarily upload a copy of the video to a connected Google Drive account. The application does not make those Drive files public through Google Drive sharing permissions. A separate media-delivery service creates a hard-to-guess, bearer-style retrieval URL for approximately 15 minutes so the platform can process the copy. Anyone who obtains a valid URL during that period may be able to retrieve the file. YouTube uploads are sent directly from the selected local file. LinkedIn and TikTok publishing are not currently operational. The original source video remains on the user’s computer and is not deleted by the application.</p>
+          <p>Deletion of a temporary Drive file is attempted after all selected publishing operations report success. If an operation fails, a Drive copy may remain for troubleshooting or retry. Cleanup of expired temporary-media records is event-driven rather than continuously scheduled, and failed Drive files do not currently have an automatic maximum retention period.</p>
+          <p>Internet transmission always carries some risk, and Google and the receiving social platforms process transferred data under their own terms and privacy practices.</p>
+          <p>Deployment-specific details for the separate media-delivery service—including its hosting provider, infrastructure region, operational access controls, and complete access-log handling—have not been verified for this policy. No specific provider, location, retention period, or logging guarantee is claimed.</p>
+        </section>
+
+        <section id="history">
+          <span class="legal-number">06</span><h2>Publishing history and errors</h2>
+          <p>The application retains a local record of publication attempts so authorized users can review what was submitted and understand each platform’s result. These records may contain the local video path, captions and other publishing metadata, timestamps, destination identifiers, platform post identifiers and URLs, success or processing states, and error information.</p>
+          <p>Error messages can include details supplied by third-party APIs and may be returned by the local backend for troubleshooting. Comprehensive error and access-log redaction has not been verified. Users should avoid placing confidential information in captions, file names, or other fields that could appear in diagnostic records.</p>
+        </section>
+
+        <section id="third-parties">
+          <span class="legal-number">07</span><h2>Third-party platform APIs</h2>
+          <p>Working backend integrations currently exist for Instagram, Facebook, and YouTube, with Google Drive supporting some Instagram and Facebook media transfers. Their availability is not universal and still depends on platform permissions, account eligibility, application mode, and provider approval. Those providers independently control their systems and may process submitted content, account data, and usage information under their own privacy policies and terms.</p>
+          <p>Platform availability, permissions, data access, and approval can change. The application does not override a platform’s privacy controls, content policies, account restrictions, or API requirements. LinkedIn publishing approval is pending. TikTok Direct Post is planned but is not implemented or approved for public use.</p>
+        </section>
+
+        <section id="retention">
+          <span class="legal-number">08</span><h2>Data retention and deletion</h2>
+          <p>No automatic retention or deletion schedule is currently implemented for publishing history, connected-account records, or stored errors. These local records remain in SQLite until they are manually removed or a future retention mechanism is implemented. Locally stored OAuth credential files are not automatically removed when platform access is revoked.</p>
+          <p>Temporary retrieval URLs expire after approximately 15 minutes, although their database records are cleaned up only when later media activity triggers cleanup. Temporary Drive files are normally deleted after all selected operations succeed, but files associated with a failed operation may remain for troubleshooting or retry.</p>
+          <p>No fixed retention period or automatic deletion procedure has been adopted for local history, stored errors, locally stored credentials, or Drive media retained after a failed operation.</p>
+          <p>The application does not currently provide an in-app history-deletion or account-disconnection function. Users may contact SMH Support to ask what manual procedures are currently available for local history or credential files. This contact option is not an automated deletion feature and does not promise immediate deletion. Deleting local records does not automatically delete posts or data held by a social platform; those must be managed through the platform.</p>
+        </section>
+
+        <section id="security">
+          <span class="legal-number">09</span><h2>Security and responsible use</h2>
+          <p>The application is intended for authorized users managing accounts they are permitted to control. The local backend does not currently provide its own user-login or role-based access-control layer, so controlling access to the Windows device and local service is important. Users are responsible for protecting device access, reviewing destinations before publishing, and reporting suspected credential exposure or unauthorized use. No security method eliminates all risk, and this policy does not claim encryption at rest, any security certification, or an absolute security guarantee.</p>
+        </section>
+
+        <section id="changes">
+          <span class="legal-number">10</span><h2>Changes to this policy</h2>
+          <p>This policy may be updated as the application design, enabled platforms, or data practices change. The effective date above does not state that the website has been deployed or that professional legal review has been completed. No previous published policy version history exists. Material changes should be reflected by updating the effective date and publishing the revised policy before it is relied upon.</p>
+        </section>
+
+        <section id="contact">
+          <span class="legal-number">11</span><h2>Contact</h2>
+          <p>For privacy questions, questions about account disconnection or currently available data-removal procedures, or security concerns, contact <strong>SMH Support</strong> at <a href="mailto:jaylz78610@gmail.com">jaylz78610@gmail.com</a>.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main"><a class="brand footer-brand" href="index.html" aria-label="SMH — Social Media Hub home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-copy"><strong>SMH</strong><span>Social Media Hub</span></span></a><p>An independent Windows desktop social media management application currently in development.</p><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="privacy.html" aria-current="page">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="mailto:jaylz78610@gmail.com">Contact</a></nav></div>
+    <div class="shell footer-bottom"><span>SMH — Social Media Hub · Product in development</span><span>Informational website · No authentication or uploads</span></div>
+  </footer>
+</body>
+</html>

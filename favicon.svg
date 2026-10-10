@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SMH | Social Media Hub">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3155f5"/><stop offset="1" stop-color="#6542df"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <path d="M16 39V27M28 45V19M40 38V26" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" transform="skewY(-18)"/>
+  <path d="M28 45V19" fill="none" stroke="#24d6e5" stroke-width="7" stroke-linecap="round" transform="skewY(-18)"/>
+</svg>
